@@ -1,0 +1,16 @@
+cn\fzk\mySpringBoot\serviceImpl\UserServiceImpl.class
+cn\fzk\mySpringBoot\Util\LocaleMessageSourceService.class
+cn\fzk\mySpringBoot\Util\ResModel$RespCode.class
+cn\fzk\mySpringBoot\vo\SocketMsg.class
+cn\fzk\mySpringBoot\service\RoleService.class
+cn\fzk\mySpringBoot\serviceImpl\RoleServiceImpl.class
+cn\fzk\mySpringBoot\service\PermissionService.class
+cn\fzk\mySpringBoot\Util\PageResModel.class
+cn\fzk\mySpringBoot\serviceImpl\PermissionServiceImpl.class
+cn\fzk\mySpringBoot\Util\ResModel.class
+cn\fzk\mySpringBoot\service\DemoService.class
+cn\fzk\mySpringBoot\serviceImpl\DemoServiceImpl.class
+cn\fzk\mySpringBoot\Util\SpringUtil.class
+cn\fzk\mySpringBoot\Util\ShiroUtil.class
+cn\fzk\mySpringBoot\service\UserService.class
+cn\fzk\mySpringBoot\Util\TaskUtil.class

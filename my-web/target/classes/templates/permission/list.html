@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/jdbc" xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="index">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="search" style="height: 80px">
+        <form id="search-form" class="search-form clearfix">
+            <div class="form-ctrl pull-left">
+                <label>权限名称：</label>
+                <input class="txt" type="text" name="name" placeholder="请输入权限名称">
+            </div>
+            <div class="form-ctrl pull-left">
+                <label>权限种类：</label>
+                <select name="resourceType">
+                    <option value="">全部</option>
+                    <option value="menu">菜单</option>
+                    <option value="button">按钮</option>
+                </select>
+            </div>
+            <input type="button" class="search-btn" style="position: relative;left: 0" value="搜索"/>
+            <input type="button" class="add-btn" value="新建权限"/>
+        </form>
+    </div>
+    <table id="permissionlist" data-url="/permission/findPage" data-query-params="queryParams"
+           data-pagination="true" data-side-pagination="server" data-page-size="10"
+           data-page-list="[10, 25, 50, 100, All]" data-cache="false" data-classes="table table-no-bordered">
+        <thead>
+        <tr>
+            <th data-formatter="indexFormatter" data-align="center">序号</th>
+            <th data-field="name" data-align="center">权限名称</th>
+            <th data-field="permission" data-align="center">权限</th>
+            <th data-formatter="resourceTypeForamtter" data-align="center">权限类别</th>
+            <th data-field="url" data-align="center">权限路径</th>
+            <th data-formatter="availableFormatter" data-align="center">是否可分配</th>
+            <th data-formatter="optionFormatter" data-align="center">操作</th>
+        </tr>
+        </thead>
+    </table>
+    <script type="text/javascript" th:src="${urls.getForLookupPath('/static/js/permission/list.js') }"></script>
+    <link type="text/css" rel="stylesheet" th:href="${urls.getForLookupPath('/static/css/user/list.css') }">
+</th:block>
+</body>
+</html>

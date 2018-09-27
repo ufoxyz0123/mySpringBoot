@@ -1,0 +1,197 @@
+/*头部*/
+.head{
+    height: 100px;
+    width: 100%;
+    background: url("../images/head.jpg")  no-repeat;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.head .headInfo{
+    width: 68%;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.head .fright{
+    float: right;
+}
+.head .fleft{
+    float: left;
+}
+.lanauge{
+   display: inline;
+    position: relative;
+    left: 850px;
+    top: 30px;
+}
+/*=================================*/
+/*================layer===========*/
+.layui-layer .layui-layer-title {
+    color: #fff;
+    font-size: 18px;
+    line-height: 46px;
+    height: 46px;
+    border-radius: 5px 5px 0 0 !important;
+    background-color: #2788e8 !important;
+}
+/*================================*/
+.blue{
+    color:#00c0F0;
+}
+.red{
+    color: red;
+}
+.white{
+    color: #ffffff;
+}
+.backcolor{
+    background-color: #ffffff;
+}
+.hide{
+    display: none;
+}
+/**icon**/
+i{
+    display: inline-block;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+}
+a:hover {
+    color: #00c0f0;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/************************LEFT-MENU START************************/
+#layout-sidebar {
+    float: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: solid #dedede 1px;
+    background-color: #fff;
+}
+.nav-menu {
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+.nav-menu .menu-item {
+    padding: 13px 20px;
+    color: #f7f1e3;
+    cursor: pointer;
+}
+
+.nav-menu .active,
+.nav-menu .active:hover {
+    background-color: #f6f9fa;
+}
+
+.nav-menu .menu-item {
+    overflow: hidden;
+}
+
+.nav-menu .menu-item span {
+    float: left;
+    display: block;
+    height: 16px;
+    line-height: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #3e3e3e;
+}
+
+.nav-menu .menu-item .icon {
+    float: right;
+    width: 16px;
+    height: 16px;
+    background-color: #d0e9c6;
+}
+
+/*------------ Sub Menu ------------*/
+.sub-menu {
+    display: none;
+    color: #ae9f9f;
+    font-size: 13px;
+    content: " ";
+    overflow: hidden;
+}
+
+.sub-menu .sub-menu-item {
+    font-size: 14px;
+    color: #3e3e3e;
+    transition: border-left 220ms ease-in;
+    cursor: pointer;
+}
+
+.sub-menu .sub-menu-item:hover {
+    background-color: #f6f9fa;
+}
+
+.sub-menu > .sub-menu-item span,
+.sub-menu > .sub-menu-item .icon {
+    float: left;
+}
+
+.sub-menu-item > a {
+    display: block;
+    height: 42px;
+    line-height: 42px;
+    padding: 13px 20px 13px 40px;
+}
+
+.sub-menu > .sub-menu-item .icon {
+    width: 16px;
+    height: 16px;
+    background-color: #d0e9c6;
+}
+
+.sub-menu > .sub-menu-item span {
+    margin-left: 12px;
+    height: 16px;
+    line-height: 16px;
+}
+
+/************************LEFT-MENU END************************/
+/**操作下拉*/
+td .show_btn {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 64px;
+    line-height: 24px;
+    color: #00c0f0;
+}
+td .show_btn:hover .show_btn_div {
+    display: block;
+}
+td .show_btn_div a:hover {
+    background: #00c0f0;
+    color: #fff;
+}
+td .show_btn_div {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: -3px;
+    width: 64px;
+    padding: 2px 0;
+    border: 1px solid #dedede;
+    border-radius: 2px;
+    background: #fff;
+    z-index: 99;
+}
+td .show_btn_div a {
+    display: block;
+    text-align: center;
+    color: #00c0f0;
+    line-height: 24px;
+    vertical-align: middle;
+}
+.fixed-table-body {
+    overflow: visible;
+}

@@ -1,0 +1,81 @@
+.search{
+    background-color: #f6f9fa;
+    height: 130px;
+    text-align: left;
+}
+.search input.txt{
+    display: inline-block;
+    width: 178px;
+    height: 32px;
+    line-height: 27px;
+    border: 1px solid #cbcbcb;
+    margin: 0 10px 0 0;
+    border-radius: 0;
+    padding: 0 10px;
+}
+.search input.date{
+   background: #fff url(/static/images/icons-bg.png) 110px -149px;
+}
+.search-form{
+    position: relative;
+    padding: 20px 25px 0 25px;
+}
+.clearfix {
+    zoom: 1;
+}
+.clearfix:before {
+    content: "";
+    display: table;
+}
+.clearfix:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+.form-ctrl{
+    margin-bottom: 22px;
+    padding-right:20px ;
+    width: 323px;
+    font-size: 12px;
+}
+.form-ctrl label{
+    width: 61px;
+    margin: 0;
+    font-size: 12px;
+    color: #6e6e6e;
+    font-weight:normal;
+}
+.form-ctrl select{
+    width: 178px;
+    height: 34px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background:#fff ;
+    border: 1px solid #dedede;
+}
+.pull-left{
+    float:left!important;
+}
+.search-btn{
+    background: #00c0f0;
+    border-radius: 4px;
+    width: 120px;
+    height: 34px;
+    border: 0px solid #006dd6 !important;
+    font-size: 14px;
+    line-height: 25px;
+    color: #ffffff;
+    position: relative;
+    left: 760px;
+}
+.add-btn{
+    background: #5cb85c;
+    border-radius: 4px;
+    width: 120px;
+    height: 34px;
+    border: 0px solid #006dd6 !important;
+    font-size: 14px;
+    line-height: 25px;
+    color: #ffffff;
+    position: relative;
+}

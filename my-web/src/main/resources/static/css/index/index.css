@@ -1,0 +1,16 @@
+.changeStatus{
+    color: #01AAED;
+    cursor: pointer;
+}
+#message{
+    margin-top:40px;
+    border:1px solid gray;
+    padding:20px;
+}
+.userTable{
+    text-align:center;
+}
+.bootstrap-table{
+    margin: 10px auto;
+
+}

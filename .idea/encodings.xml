@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/dubbo-provide" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my-dto" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my-portal" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/my-web" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

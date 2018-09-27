@@ -1,0 +1,101 @@
+spring:
+  ########################################################
+  ### Java Persistence Api
+  ########################################################
+  jpa:
+    database: MYSQL
+    # Show or not log for each sql query
+    show-sql: false
+    #防止因session关闭懒加载问题，默认就是true 配不配基本没影响
+    open-in-view: true
+    # Hibernate ddl auto (create, create-drop, update,validate,none)
+    hibernate:
+      ddl-auto: validate
+      naming:
+        #JPA命名策略 遇到大写字母 加”_”的命名，若是org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl 则无修改命名，但都以设置的@Column为主。
+        hysical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+      # 数据库方言
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+  ########################################################
+  ###datasource 数据源
+  ########################################################
+  datasource:
+    primary:
+      url: jdbc:mysql://47.97.216.226:3306/fzk?useSSL=false
+      username: root
+      password: etoak543518241-FZK
+      driverClassName: com.mysql.jdbc.Driver
+    secondary:
+      url: jdbc:mysql://47.97.216.226:3306/test?useSSL=false
+      username: root
+      password: etoak543518241-FZK
+      driverClassName: com.mysql.jdbc.Driver
+  ########################################################
+  ### h2DB内存数据库
+  ########################################################
+  #h2:
+    #指定一个绝对的路径;h2的路径中~的意思，"~"这个符号代表的就是当前登录到操作系统的用户对应的用户目录，我们具体的路径就是：C:\Users\Administrator.angel-PC\，
+    #所以在文件目录C:\Users\Administrator.angel-PC\.h2中就可以看到testdb.mv.db文件了。
+    #url: jdbc:h2:file:~/.h2/testdb
+    #username: sa
+    #password: sa
+    #driverClassName: org.h2.Driver
+  #连接池druid
+  type: com.alibaba.druid.pool.DruidDataSource
+  druid:
+    # 合并多个DruidDataSource的监控数据
+    useGlobalDataSourceStat: true
+    # 下面为连接池的补充设置，应用到上面所有数据源中
+    # 初始化大小，最小，最大
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    # 配置获取连接等待超时的时间
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connectionProperties:
+      druid:
+        stat:
+          mergeSql: true
+          slowSqlMillis: 5000
+  ########################################################
+  ### # MONGODB (MongoProperties)
+  ########################################################
+  data:
+    mongodb:
+      authentication-database: # Authentication database name.
+      field-naming-strategy: # Fully qualified name of the FieldNamingStrategy to use.
+      grid-fs-database: # GridFS database name.
+      #数据库地址
+      host: 47.97.216.226 # Mongo server host.
+      #数据库名
+      database: admin
+      #账号
+      #username: root
+      #密码
+      #password: etoak543518241
+      #端口
+      port: 27017 # Mongo server port.
+      #将host database port username password一次性配置，有了这个，别的会被无视
+      #uri: mongodb://localhost/test # Mongo database URI. When set, host and port are ignored.
+########################################################
+### mybatis
+########################################################
+mybatis:
+  #扫描实体类位置
+  type-aliases-package: /cn/fzk/mySpringBoot/entity/secenetity
+  #mapper.xml的位置
+  mapper-locations: classpath:mybatis/mapper/*.xml

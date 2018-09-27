@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head  th:include="../static/html/static">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form id="emailInfo">
+        <p>接收人：<input name="to" type="text"/></p>
+        <p>标题：<input name="subject" type="text"/></p>
+        <p>内容：<textarea name="text" style="resize:none"></textarea></p>
+        <p>是否使用模板：<input name="isUseTem" type="checkbox" value="1"/></p>
+        <input type="button" value="发送" onclick="sendEmail()"/>
+    </form>
+    <form enctype="multipart/form-data" id="moreUpload">
+        <p>附件：<input type="file" name="file" multiple="multiple"/></p>
+        <p><input type="button" value="上传" onclick="moreUpload()"/></p>
+    </form>
+</body>
+<script>
+    function sendEmail() {
+        poster.sendEmail($("#emailInfo").serialize());
+    }
+    function moreUpload() {
+        poster.moreUpload($("#moreUpload")[0])
+    }
+</script>
+</html>

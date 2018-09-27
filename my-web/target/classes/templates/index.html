@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:shiro="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<head th:replace="../static/html/static :: static(~{::title},~{::link},~{})">
+    <link type="text/css" rel="stylesheet" th:href="${urls.getForLookupPath('/static/css/index/index.css')}">
+    <title>首页</title>
+</head>
+<body class="backcolor">
+<div class="head" th:include="../static/html/head :: head"></div>
+
+<!-- 这些实际从数据库中进行查询，可以在 -->
+<!--<p shiro:hasRole="admin">
+    <a>管理员角色</a>
+</p>
+<p shiro:hasPermission="userInfo:query">
+    <a href="/userInfo/userList">用户查询</a>
+</p>
+<p shiro:hasPermission="userInfo:add">
+    <a href="/userInfo/userAdd">用户添加</a>
+</p>
+<div th:each="roleList:${userInfo.roleList}">
+    <span th:text="${roleList.description}"></span>
+    &lt;!&ndash; 角色下所有的所有菜单,实际开发中，只需要获取所有的权限就可以了，无所谓是哪个角色的； &ndash;&gt;
+    <p style="color:blue;margin-left:30px;" th:each="permission:${roleList.permissions}">
+        <a th:href="${permission.url}" th:text="${permission.name}"></a>
+    </p>
+</div>
+
+<hr />-->
+<div shiro:lacksRole="admin">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2" th:include="../static/html/leftMenu :: leftMenu"></div>
+            <div class="col-md-10">
+                <button type="button" class="btn btn-success" data-mark="0">打开聊天室</button>
+                <button type="button" class="btn btn-warning">关闭聊天室</button>
+                <br/>
+                消息：<input id="text" type="text"/>
+                频道号<input id="toUser" type="text"/>
+                <button onclick="send()">发送消息</button>
+                <div id="message" class="hide"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div shiro:hasRole="admin" class="userTable">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2" th:include="../static/html/leftMenu :: leftMenu" id="layout-sidebar"></div>
+            <div class="col-md-10">
+                <th:block layout:fragment="content">
+
+                </th:block>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" th:src="${urls.getForLookupPath('/static/js/index/index.js') }"></script>
+<script th:inline="javascript">
+    /**
+     * 连接聊天室
+     * */
+    $(".btn-success").on("click", function (e) {
+        var param = e.target;
+        var cid = [[${userInfo.uid}]];
+        var nickname = [[${userInfo.nickName}]];
+        poster.websocket(param, cid, nickname);
+    });
+</script>
+</html>

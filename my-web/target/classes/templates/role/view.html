@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="../static/html/static :: static(~{},~{::link},~{})">
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" th:href="${urls.getForLookupPath('/static/css/user/view.css')}">
+
+</head>
+<body  class="backcolor">
+<div class="wrapper">
+    <form novalidate="novalidate" id="roleForm">
+        <div class="row">
+            <input class="form-control" type="hidden" name="roleId" th:value="${editAndViewRole} == null ?null:${editAndViewRole.roleId}">
+            <input class="form-control" type="hidden" name="permissionIds">
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span class="input-group-addon"><em>*</em>角色</span>
+                    <input class="form-control" type="text" name="role" title="请输入角色名称!" th:value="${editAndViewRole}== null ?null:${editAndViewRole.role}" placeholder="请输入角色名称!">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span class="input-group-addon"><em>*</em>角色描述</span>
+                    <input class="form-control" type="text" name="description" th:value="${editAndViewRole}== null ?null:${editAndViewRole.description}" title="请输入角色描述!" placeholder="请输入角色描述!">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2" style="float: left;width: 130px">
+                <div class="input-group" style="height: 34px;">
+                    <span class="input-group-addon">权限分配</span>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span id="treeDemo" class="ztree"></span>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <input type="button" class="btn btn-bgblue" value="保存" id="btnSave">
+        </div>
+    </form>
+</div>
+</body>
+<script th:inline="javascript">
+    var menuTree;
+    var setting = {
+        check: {
+            enable: true,
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        edit: {
+            enable: true
+        }
+
+    };
+    var zNodes = [[${permissionList}]];
+
+    $(document).ready(function () {
+        menuTree = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        var checkedNodes = menuTree.getCheckedNodes();
+        for (var i = 0; i < checkedNodes.length; i++) {
+            var node = checkedNodes[i];
+            if (node.isParent == false) {
+                menuTree.checkNode(checkedNodes[i], true, true);
+            }
+        }
+    });
+
+    function getPostNodes(nodes) {
+        var permissionIds = "";
+        for (var i = 0; i < nodes.length; i++) {
+            if (nodes[i].level != 0) {
+                permissionIds += nodes[i].id + ",";
+            }
+        }
+        return permissionIds;
+    }
+
+    $("#btnSave").on('click',function (e) {
+        var nodes = menuTree.getCheckedNodes(true);
+        var postNodes = getPostNodes(nodes);
+        $("input[name='permissionIds']").val(postNodes);
+        poster.doRoleEditAndView($("#roleForm"));
+    });
+</script>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dubbo-api" />
+        <module name="dubbo-provide" />
+        <module name="dubboprovide" />
+        <module name="my-dto" />
+        <module name="my-portal" />
+        <module name="my-service" />
+        <module name="my-web" />
+      </profile>
+      <profile name="Annotation profile for mySpringBoot" enabled="true">
+        <sourceOutputDir name="../target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dubboapi" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dubbo-api" target="1.8" />
+      <module name="dubbo-consumer" target="1.8" />
+      <module name="dubbo-provide" target="1.8" />
+      <module name="dubbo-provider" target="1.8" />
+      <module name="dubboapi" target="1.8" />
+      <module name="dubboprovide" target="1.8" />
+      <module name="my-dto" target="1.8" />
+      <module name="my-portal" target="1.8" />
+      <module name="my-service" target="1.8" />
+      <module name="my-web" target="1.8" />
+      <module name="mySpringBoot" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

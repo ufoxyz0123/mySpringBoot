@@ -1,0 +1,171 @@
+#--------------------------------------这是测试环境配置---------------------------------------------------------
+########################################################
+### 自己设置
+########################################################
+wisely2:
+  name: wyf2
+  gender: male2
+other:
+  #随机字符串
+  v1: ${random.value}
+  # 随机int
+  v2: ${random.int}
+  # 随机long
+  v3: ${random.long}
+  # 10以内的随机数
+  v4: ${random.int(10)}
+  # 10-20的随机数
+  v5: ${random.int[10,20]}
+  # 引用其他配置项
+  v6: ${random.int[10,20]}${wisely2.name}
+
+spring:
+  ########################################################
+  ### aop
+  ########################################################
+  #开启CGLIB动态代理模式，默认是java的代理模式，基于接口实现，CGLIB是不需要接口的
+  #aop:
+    #proxy-target-class: true
+  ########################################################
+  ### REDIS (RedisProperties) redis基本配置；
+  ########################################################
+  # database name
+  redis:
+    #Redis数据库索引（默认为0）
+    database: 0
+    # Redis服务器地址
+    host: 47.97.216.226
+    # Redis服务器连接密码（默认为空）
+    password: etoak543518241
+    #Redis服务器连接端口
+    port: 6379
+    #redis 超时断连时间
+    timeout: 1800
+    #Spring Boot 2.0.0.M7中原有的redis配置方法过时，加了一层jedis
+    jedis:
+      # 连接池设置
+      pool:
+        #连接池中的最大空闲连接
+        max-idle: 8
+        #连接池中的最小空闲连接
+        min-idle: 0
+        #连接池最大连接数（使用负值表示没有限制）
+        max-active: 8
+        #连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1
+    #哨兵监听的Redis server的名称
+    #sentinel:
+      #master:
+      #哨兵的配置列表
+      #nodes:
+  #文件上传配置
+  servlet:
+    multipart:
+      #默认支持文件上传
+      enabled: true
+      #支持文件写入磁盘.
+      file-size-threshold: 0
+      #最大支持文件大小
+      maxFileSize: 10Mb
+      #上传文件的临时目录
+      location: E:\data
+      #最大支持请求大小
+      max-request-size: 50Mb
+  ########################################################
+  ### 邮件发送
+  ########################################################
+  mail:
+    # 设置邮箱主机
+    host: smtp.qq.com
+    # 设置用户名
+    username: 543518241
+    # 设置密码
+    password: qjjketffiovgbced
+    # 服务器超时时间
+    timeout: 50000
+    #端口号
+    port: 587
+    # 开启控制台打印服务器相应信息（日志）
+    debug: true
+    # 设置是否需要认证，如果为true,那么用户名和密码就必须的，
+    properties:
+      mail:
+        smtp:
+          #如果设置false，可以不设置用户名和密码，当然也得看你的对接的平台是否支持无密码进行访问的。
+          auth: true
+          # STARTTLS[1]  是对纯文本通信协议的扩展。它提供一种方式将纯文本连接升级为加密连接（TLS或SSL），而不是另外使用一个端口作加密通信。
+          starttls:
+            enable: true
+            required: true
+########################################################
+### EMBEDDED SERVER CONFIGURATION (ServerProperties)
+########################################################
+server:
+  http2:
+    #开启http2
+    enabled: true
+  #https端口号
+  http:
+    port: 8080
+  #https端口号
+  port: 443
+  ssl:
+    #证书的路径.
+    key-store: classpath:keystore.p12
+    #证书密码
+    key-store-password: fzk543518241
+    #秘钥库类型
+    keyStoreType: JCEKS
+    #证书别名
+    keyAlias: tomcat
+  #该服务绑定IP地址，启动服务器时如本机不是该IP地址则抛出异常启动失败，只有特殊需求的情况下才配置
+  #address:
+  # session最大超时时间(分钟)，默认为30
+  #session-timeout= # session timeout in seconds
+  #the context path, 默认 '/'，即ip+端口+此地址
+  #context-path: /
+  # 错误页：指定发生错误时，跳转的URL。请查看BasicErrorController。
+  #error.path=/error
+  # the servlet path, defaults to '/' 即dispatcher servlet的监听路径
+  #servlet-path=
+  ########################################################
+  ### Undertow,是比Tomcat好用很多的web服务器
+  ########################################################
+  #undertow:
+    # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+    io-threads: 4
+    # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+    worker-threads: 20
+    # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
+    # 每块buffer的空间大小,越小的空间被利用越充分
+    buffer-size: 1024
+    # 每个区分配的buffer数量 , 所以pool的大小是buffer-size * buffers-per-region
+    buffers-per-region: 1024
+    # 是否分配的直接内存
+    direct-buffers: true
+  ########################################################
+  ### tomcat容器
+  ########################################################
+  #tomcat:
+    #打开Tomcat的Access日志
+    #access-log-enabled: false
+    #Tomcat的Access日志格式
+    #access-log-pattern=
+    #tomcat.protocol-header=x-forwarded-proto # ssl forward headers
+    #tomcat.remote-ip-header=x-forwarded-for
+    # 存放Tomcat的日志、Dump等文件的临时文件夹，默认为系统的tmp文件夹（如：C:\Users\Angel\AppData\Local\Temp）
+    #basedir: /tmp
+    #background-processor-delay=30; # in seconds
+    #tomcat最大线程数，默认为200
+    #max-threads: 0
+    # tomcat的URI编码
+    #uri-encoding: UTF-8
+########################################################
+### 屏蔽命令行访问
+########################################################
+#java -jar xxx.jar --server.port=8888，通过使用--server.port属性来设置xxx.jar应用的端口为8888
+SpringApplication:
+  setAddCommandLineProperties: false
+
+
+

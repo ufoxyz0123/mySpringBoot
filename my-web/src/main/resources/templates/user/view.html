@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:shiro="http://www.w3.org/1999/xhtml">
+<head th:replace="../static/html/static :: static(~{},~{::link},~{})">
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" th:href="${urls.getForLookupPath('/static/css/user/view.css')}">
+</head>
+<body  class="backcolor">
+<div class="wrapper">
+    <form novalidate="novalidate" id="userForm">
+        <div class="row">
+            <input class="form-control" type="hidden" name="uid" th:value="${editAndViewUserInfo.uid}">
+            <input class="form-control" type="hidden" name="userName" th:value="${editAndViewUserInfo.userName}">
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span class="input-group-addon"><em>*</em>帐户</span>
+                    <span class="form-control" th:text="${editAndViewUserInfo.userName}"></span>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span class="input-group-addon"><em>*</em>姓名</span>
+                    <input class="form-control" type="text" name="realName" th:value="${editAndViewUserInfo.realName}" title="请输入姓名!" >
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span class="input-group-addon"><em>*</em>手机</span>
+                    <input class="form-control" type="text" id="mobileNo" name="phone" title="请输入正确的手机号!" number="true" maxlength="11" th:value="${editAndViewUserInfo.phone}">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span class="input-group-addon"><em>*</em>邮箱</span>
+                    <input class="form-control" type="text" id="email" name="email" th:value="${editAndViewUserInfo.email}" title="请输入邮箱!">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span class="input-group-addon">QQ</span>
+                    <input class="form-control" type="text" id="QQ" name="QQ" title="请输入正确的手机号!" number="true" maxlength="11" th:value="${editAndViewUserInfo.QQ}">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span class="input-group-addon">昵称</span>
+                    <input class="form-control" type="text" name="nickName" th:value="${editAndViewUserInfo.nickName}">
+                </div>
+            </div>
+        </div>
+        <div class="row" shiro:hasRole="admin">
+            <div class="col-lg-2 more-select">
+                <div class="input-group">
+                    <span class="input-group-addon"><em>*</em>角色</span>
+                    <select name="roleIds" title="请选择角色!" class="selectpicker show-tick form-control" multiple data-live-search="false" id="roleIds">
+                        <option  th:each="role,iterStat : ${roleList}" th:value="${role.roleId}" th:text="${role.description}" class="roleIds"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <input type="button" class="btn btn-bgblue" value="保存" id="btnSave">
+        </div>
+    </form>
+</div>
+</body>
+<script th:inline="javascript">
+    var roles = [[${roleIds}]];
+    $(window).on('load', function () {
+        $('#roleIds').selectpicker('val',roles);
+    });
+    $("#btnSave").on("click",function (e) {
+        poster.updateUser($("#userForm"));
+    });
+</script>
+</html>

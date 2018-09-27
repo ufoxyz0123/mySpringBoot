@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/jdbc" xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="index">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="search">
+        <form id="search-form" class="search-form clearfix">
+            <div class="form-ctrl pull-left">
+                <label>用户账号：</label>
+                <input class="txt" type="text" name="userName" placeholder="请输入用户名">
+            </div>
+            <div class="form-ctrl pull-left">
+                <label>联系方式：</label>
+                <input class="txt" type="number" name="phone" placeholder="请输入手机号">
+            </div>
+            <div class="form-ctrl pull-left">
+                <label>账号状态：</label>
+                <select name="status">
+                    <option value="">全部</option>
+                    <option value="0">正常用户</option>
+                    <option value="1">冻结用户</option>
+                </select>
+            </div>
+            <div class="form-ctrl pull-left">
+                <label>是否实名：</label>
+                <select name="certification">
+                    <option value="">全部</option>
+                    <option value="0">未认证</option>
+                    <option value="1">已认证</option>
+                </select>
+            </div>
+            <div class="form-ctrl pull-left">
+                <label>创建时间：</label>
+                <input class="txt date Wdate" style="width: 105px;" aria-label="Amount (to the nearest dollar)" name="createTimeBegin" placeholder="开始日期" id="createTimeBegin"
+                       onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'#F{$dp.$D(\'createTimeEnd\')}'})" type="text">-
+                <input class="txt date Wdate marginright35" style="width: 105px; float:right;margin-right: 0;" aria-label="Amount (to the nearest dollar)" name="createTimeEnd" id="createTimeEnd" placeholder="结束日期"
+                       onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'createTimeBegin\')}'})" type="text">
+            </div>
+            <input type="button" class="search-btn" value="搜索"/>
+        </form>
+    </div>
+    <table id="userlist" data-url="/user/findPage" data-query-params="queryParams"
+           data-pagination="true" data-side-pagination="server" data-page-size="10"
+           data-page-list="[10, 25, 50, 100, All]" data-cache="false" data-classes="table table-no-bordered">
+        <thead>
+        <tr>
+            <th data-formatter="indexFormatter" data-align="center">序号</th>
+            <th data-field="userName" data-align="center">账号</th>
+            <th data-field="nickName" data-align="center">昵称</th>
+            <th data-formatter="certificationFormatter" data-align="center">是否实名</th>
+            <th data-formatter="statusFormatter" data-align="center">状态</th>
+            <th data-formatter="createTimeFormatter" data-align="center">申请时间</th>
+            <th data-formatter="optionFormatter" data-align="center">操作</th>
+        </tr>
+        </thead>
+    </table>
+    <script type="text/javascript" th:src="${urls.getForLookupPath('/static/js/user/list.js') }"></script>
+    <link type="text/css" rel="stylesheet" th:href="${urls.getForLookupPath('/static/css/user/list.css') }">
+</th:block>
+</body>
+</html>

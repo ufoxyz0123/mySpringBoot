@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/jdbc" xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorator="index">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div class="search" style="height: 80px">
+        <form id="search-form" class="search-form clearfix">
+            <div class="form-ctrl pull-left">
+                <label>角色名称：</label>
+                <input class="txt" type="text" name="role" placeholder="请输入角色名称">
+            </div>
+            <div class="form-ctrl pull-left">
+                <label>角色描述：</label>
+                <input class="txt" type="text" name="description" placeholder="请输入角色描述">
+            </div>
+            <div class="form-ctrl pull-left">
+                <label>角色状态：</label>
+                <select name="available">
+                    <option value="">全部</option>
+                    <option value="1">不可分配</option>
+                    <option value="0">可分配</option>
+                </select>
+            </div>
+            <input type="button" class="search-btn" style="position: relative;left: 0" value="搜索"/>
+            <input type="button" class="add-btn" value="新建角色"/>
+        </form>
+    </div>
+    <table id="rolelist" data-url="/role/findPage" data-query-params="queryParams"
+           data-pagination="true" data-side-pagination="server" data-page-size="10"
+           data-page-list="[10, 25, 50, 100, All]" data-cache="false" data-classes="table table-no-bordered">
+        <thead>
+        <tr>
+            <th data-formatter="indexFormatter" data-align="center">序号</th>
+            <th data-field="role" data-align="center">角色</th>
+            <th data-field="description" data-align="center">描述</th>
+            <th data-formatter="availableFormatter" data-align="center">是否可分配</th>
+            <th data-formatter="optionFormatter" data-align="center">操作</th>
+        </tr>
+        </thead>
+    </table>
+    <script type="text/javascript" th:src="${urls.getForLookupPath('/static/js/role/list.js') }"></script>
+    <link type="text/css" rel="stylesheet" th:href="${urls.getForLookupPath('/static/css/user/list.css') }">
+</th:block>
+</body>
+</html>

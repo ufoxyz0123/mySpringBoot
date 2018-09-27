@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="../static/html/static :: static(~{::title},~{::link},~{})">
+    <title>登录</title>
+    <link type="text/css" rel="stylesheet" th:href="${urls.getForLookupPath('/static/css/login/login.css') }">
+</head>
+<body class="backcolor">
+    <div class="container" id="userinfo">
+        <form class="form-horizontal">
+           <!-- <div class="form-group">
+                <label  th:if="!${#strings.isEmpty(msg)}" class="col-sm-6 control-label" style="color: red"><h4 th:text="${msg}"></h4></label >
+            </div>-->
+            <div class="form-group">
+                <label for="username" class="col-sm-4 control-label">用户名：</label>
+                <div class="col-sm-3">
+                    <input type="text" name="username"  class="form-control" id="username" placeholder="用户名">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-4 control-label">密码：</label>
+                <div class="col-sm-3">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="randomcode" class="col-sm-4 control-label">验证码：</label>
+                <div class="col-sm-3">
+                    <input type="text" name="randomcode" class="form-control" id="randomcode" placeholder="验证码" style="width: 70%;display: inline;">
+                    <img th:src="@{/myServlet2/validatecodeServlet}" height="36px" width="60px"  onclick="changeValidatecode(this)"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-3">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="rememberMe"> 记住我
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-3">
+                    <input type="button" class="btn btn-info" value="登录"/>
+                    <input type="button" class="btn btn-default" value="注册"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" th:src="${urls.getForLookupPath('/static/js/login/login.js') }"></script>
+<script  th:inline="javascript">
+   $(function () {
+       var msg = [[${msg}]];
+       if(msg){
+           layui.use('layer', function(){
+               var layer= layui.layer//获取layer模块
+               layer.confirm(msg, {
+                   icon: 2,
+                   title: '提示',
+                   btn: ['关闭'],
+                   area: ['auto', 'auto'],
+                   skin: 'layer-confirm',
+               },function (index) {
+                   layer.close(index);
+               })
+           });
+       }
+   })
+</script>
+</html>

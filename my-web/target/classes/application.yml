@@ -1,0 +1,69 @@
+spring:
+  #多环境配置
+  profiles:
+    active: dev
+  ########################################################
+  ### i18n setting.
+  ########################################################
+  messages:
+    #指定message的basename，多个以逗号分隔，如果不加包名的话，默认从classpath路径开始，默认: messages
+    basename: i18n/messages
+    #设定加载的资源文件缓存失效时间，-1的话为永不过期，默认为-1
+    #cache-seconds: 3600
+    #设定Message bundles的编码，默认: UTF-8
+    encoding: UTF-8
+  ########################################################
+  ### thymeleaf
+  ########################################################
+  thymeleaf:
+    #prefix: classpath:/templates
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    # ;charset=<encoding> is added
+    servlet:
+      content-type: text/html
+    # 关闭缓存，否则无法看到实时页面
+    cache: false
+    #Javascript 语言的模板引擎：Mustache
+    mustache:
+      cache: false
+  ########################################################
+  ### # RABBIT (RabbitProperties)  消息队列
+  ########################################################
+  #rabbitmq:
+    #host:  # connection host
+    #port: # connection port
+    #addresses: # connection addresses (e.g. myhost:9999,otherhost:1111)
+    #username:  # login user
+    #password: # login password
+    #virtualhost:
+    #dynamic:
+  ########################################################
+  ### Spring 静态资源版本映射之资源名称md5方式，防止页面缓存
+  ########################################################
+  resources:
+    chain:
+      strategy:
+        content:
+          enabled: true
+          paths: /**
+  ########################################################
+  ### favicon.ico小图标
+  ########################################################
+  mvc:
+    favicon:
+      #关闭默认图标，默认是开启的
+      enabled : false
+  ########################################################
+  ### 处理直接返回中文时乱码问题
+  ########################################################
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+########################################################
+### logback配置
+########################################################
+logging:
+  config: classpath:logback-spring.xml

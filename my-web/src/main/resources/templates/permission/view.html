@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="../static/html/static :: static(~{},~{::link},~{})">
+    <meta charset="UTF-8">
+    <link type="text/css" rel="stylesheet" th:href="${urls.getForLookupPath('/static/css/user/view.css')}">
+</head>
+<body  class="backcolor">
+<div class="wrapper">
+    <form novalidate="novalidate" id="perForm">
+        <input class="form-control" type="hidden" name="permissionId" th:value="${editAndViewPer}== null?null:${editAndViewPer.permissionId}" >
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span class="input-group-addon"><em>*</em>名称</span>
+                    <input class="form-control" type="text" name="name" title="请输入角色名称!" th:value="${editAndViewPer}== null?null:${editAndViewPer.name}" placeholder="请输入权限名称!">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span class="input-group-addon"><em>*</em>权限</span>
+                    <input class="form-control" type="text" name="permission" title="请输入角色名称!" th:value="${editAndViewPer}== null?null:${editAndViewPer.permission}" placeholder="请输入权限!">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span class="input-group-addon"><em>*</em>权限路径</span>
+                    <input class="form-control" type="text" name="url" title="请输入角色名称!" th:value="${editAndViewPer}== null?null:${editAndViewPer.url}" placeholder="请输入权限!">
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span class="input-group-addon"><em>*</em>权限类别</span>
+                    <select name="resourceType" title="请选择角色!" class="form-control"  id="resourceType">
+                        <option value="button">按钮</option>
+                        <option value="menu">菜单</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row" th:if="${editAndViewPer}== null">
+            <div class="col-lg-2">
+                <div class="input-group">
+                    <span class="input-group-addon">父级权限</span>
+                    <select name="parentId" title="请选择父级权限!" class="form-control"  id="parentId">
+                        <option value="">请选择父级权限</option>
+                        <option  th:each="per,iterStat : ${pers}" th:value="${per.permissionId}" th:text="${per.permission}"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <input type="button" class="btn btn-bgblue" value="保存" id="btnSave">
+        </div>
+    </form>
+</div>
+</body>
+<script th:inline="javascript">
+    var per = [[${editAndViewPer}]];
+    $(function () {
+        if(per){
+            $("#resourceType").find("option[value="+per.resourceType+"]").attr("selected",true);
+        }
+    });
+    /**
+     * 新增、详情与修改权限
+     * */
+    $("#btnSave").on("click",function (e) {
+        poster.doPerEditAndView($("#perForm"));
+    });
+</script>
+</html>

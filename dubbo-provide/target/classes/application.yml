@@ -1,0 +1,13 @@
+## dubbo springboot 配置
+spring:
+  dubbo:
+    application:
+      id: mySpringBoot-dubbo-provider
+      name: mySpringBoot-dubbo-provider # 服务名称
+    registry:
+      address: zookeeper://127.0.0.1:2181 # 注册中心地址
+    server: true
+    protocol:
+      name: dubbo # dubbo 协议
+      port: 20880 # duboo端口号
+    scan: #这是你要发布到dubbo的接口所在包位置

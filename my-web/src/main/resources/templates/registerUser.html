@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link th:include="../static/html/static">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="userName" class="col-sm-1 control-label">用户名：</label>
+                    <div class="col-sm-1">
+                        <input type="text" name="userName"  class="form-control" id="userName" placeholder="用户名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="passWord" class="col-sm-1 control-label">密码：</label>
+                    <div class="col-sm-1">
+                        <input type="passWord" class="form-control" id="passWord" placeholder="密码">
+                        <input type="hidden" name="passWord" id="passWordMd5">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nickName" class="col-sm-1 control-label">昵称：</label>
+                    <div class="col-sm-1">
+                        <input type="text" name="nickName" class="form-control" id="nickName" placeholder="昵称">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-1 col-sm-1">
+                        <input type="button" class="btn btn-info" value="注册"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    $(".btn-info").on("click",function () {
+        poster.saveUser($(".form-horizontal"));
+    });
+</script>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/dubbo-api/dubbo-api.iml" filepath="$PROJECT_DIR$/dubbo-api/dubbo-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dubbo-provide/dubbo-provide.iml" filepath="$PROJECT_DIR$/dubbo-provide/dubbo-provide.iml" />
+      <module fileurl="file://$PROJECT_DIR$/my-dto/my-dto.iml" filepath="$PROJECT_DIR$/my-dto/my-dto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/my-portal/my-portal.iml" filepath="$PROJECT_DIR$/my-portal/my-portal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/my-service/my-service.iml" filepath="$PROJECT_DIR$/my-service/my-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/my-web/my-web.iml" filepath="$PROJECT_DIR$/my-web/my-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mySpringBoot.iml" filepath="$PROJECT_DIR$/mySpringBoot.iml" />
+    </modules>
+  </component>
+</project>

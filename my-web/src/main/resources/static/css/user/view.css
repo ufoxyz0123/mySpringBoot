@@ -1,0 +1,33 @@
+.wrapper {
+    margin: 0 auto;
+    padding-top: 20px;
+    width: 560px;
+}
+.row {
+    margin-bottom: 12px;
+}
+.col-lg-2 {
+    width: 288px;
+    display: inline-block;
+}
+em {
+    color: red;
+}
+.buttons {
+    text-align: center;
+    margin: 35px;
+}
+.buttons input {
+    width: 100px;
+}
+.btn-bgblue {
+    background-color: #4497ed !important;
+    color: #fff !important;
+    border-color: #4497ed !important;
+}
+.input-group-addon {
+    min-width: 60px;
+}
+.col-lg-2.more-select{
+    width: 580px;
+}

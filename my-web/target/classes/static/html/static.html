@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="static(title,links,styles)">
+    <meta charset="utf-8">
+    <title th:replace="${title}"></title>
+
+
+    <link type="text/css" rel="stylesheet" th:href="${urls.getForLookupPath('/static/css/lib/bootstrap-table.css') }">
+    <link type="text/css" rel="stylesheet" th:href="${urls.getForLookupPath('/static/css/lib/bootstrap.min.css') }">
+    <link type="text/css" rel="stylesheet" th:href="${urls.getForLookupPath('/static/layui/css/layui.css') }">
+    <link type="text/css" rel="stylesheet" th:href="${urls.getForLookupPath('/static/css/common.css') }">
+    <link type="text/css" rel="stylesheet" th:href="${urls.getForLookupPath('/static/css/lib/bootstrap-select.css') }">
+    <link type="text/css" rel="stylesheet" th:href="${urls.getForLookupPath('/static/zTree_v3/css/zTreeStyle/zTreeStyle.css') }">
+
+
+    <script type="text/javascript"  th:src="${urls.getForLookupPath('/static/js/lib/jquery-3.3.1.js') }"></script>
+    <script type="text/javascript"  th:src="${urls.getForLookupPath('/static/js/lib/bootstrap.min.js') }"></script>
+    <script type="text/javascript"  th:src="${urls.getForLookupPath('/static/js/lib/bootstrap-table.js') }"></script>
+    <script type="text/javascript"  th:src="${urls.getForLookupPath('/static/js/lib/bootstrap-table-zh-CN.js') }"></script>
+    <script type="text/javascript"  th:src="${urls.getForLookupPath('/static/layui/layui.js') }"></script>
+    <script type="text/javascript"  th:src="${urls.getForLookupPath('/static/js/lib/md5.js') }"></script>
+    <script type="text/javascript"  th:src="${urls.getForLookupPath('/static/js/comurl.js') }"></script>
+    <script type="text/javascript"  th:src="${urls.getForLookupPath('/static/js/comfun.js') }"></script>
+    <script type="text/javascript"  th:src="${urls.getForLookupPath('/static/js/layout.js') }"></script>
+    <script type="text/javascript"  th:src="${urls.getForLookupPath('/static/js/My97DatePicker/WdatePicker.js')}"></script>
+    <script type="text/javascript"  th:src="${urls.getForLookupPath('/static/js/lib/bootstrap-select.js')}"></script>
+    <script type="text/javascript"  th:src="${urls.getForLookupPath('/static/js/lib/bootstrap-table-zh-CN.js')}"></script>
+    <script type="text/javascript"  th:src="${urls.getForLookupPath('/static/zTree_v3/js/jquery.ztree.core.js')}"></script>
+    <script type="text/javascript"  th:src="${urls.getForLookupPath('/static/zTree_v3/js/jquery.ztree.excheck.js')}"></script>
+
+
+    <link href="../static/images/favicon.ico" rel="shortcut icon" />
+
+    <!--/* Per-page placeholder for additional links */-->
+    <th:block th:replace="${links}" />
+    <!--/* Per-page placeholder for additional styles */-->
+    <th:block th:replace="${styles}" />
+
+</head>
+</html>

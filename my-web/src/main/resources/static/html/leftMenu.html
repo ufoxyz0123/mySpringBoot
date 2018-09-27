@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div id="layout-sidebar" th:fragment="leftMenu">
+    <ul class="nav-menu">
+        <li class="menu-item">
+            <a href="/">
+                <span>首页</span>
+            </a>
+        </li>
+        <li class="menu-item">
+            <span>超级管理员</span>
+            <i class="icon icon-arrow-up"></i>
+        </li>
+        <ul class="sub-menu">
+            <li class="sub-menu-item">
+                <a th:href="@{/user/init}">
+                    <i class="icon icon-warn"></i>
+                    <span>账号管理</span>
+                </a>
+            </li>
+            <li class="sub-menu-item">
+                <a th:href="@{/role/init}">
+                    <i class="icon icon-warn"></i>
+                    <span>角色管理</span>
+                </a>
+            </li>
+            <li class="sub-menu-item">
+                <a th:href="@{/permission/init}">
+                    <i class="icon icon-warn"></i>
+                    <span>权限管理</span>
+                </a>
+            </li>
+        </ul>
+    </ul>
+</div>
+</body>
+</html>
